@@ -1,0 +1,6 @@
+1. Install the OllamaSetUp and install pip install ollma in anaconda prompt
+2. START Ollama
+3. Open terminal / command prompt: and type - ollama run phi3:mini
+(Model will be downloaded)
+4. Keep it running (don't close the terminal)
+5. then run app.py

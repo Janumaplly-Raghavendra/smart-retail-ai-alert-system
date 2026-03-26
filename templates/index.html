@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Fashion Stylist</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    color:white;
+}
+
+.chat-box{
+    height:450px;
+    overflow-y:auto;
+    padding:10px;
+}
+
+.user{
+    text-align:right;
+}
+
+.user span{
+    background:#0d6efd;
+    padding:8px 12px;
+    border-radius:10px;
+    color:white;
+}
+
+.bot{
+    background:white;
+    color:black;
+    padding:10px;
+    border-radius:10px;
+    margin:10px 0;
+}
+
+.badge-item{
+    background:#dee2e6;
+    margin:2px;
+    padding:5px;
+    border-radius:8px;
+    display:inline-block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+<h3 class="text-center">👗 AI Fashion Stylist</h3>
+
+<div class="card p-3 shadow">
+
+<!-- FORM -->
+<form method="POST">
+<div class="row">
+<div class="col"><select name="category" class="form-select"><option>Men</option><option>Women</option></select></div>
+<div class="col"><select name="style" class="form-select"><option>Casual</option><option>Formal</option><option>Party</option></select></div>
+<div class="col"><select name="occasion" class="form-select"><option>Office</option><option>Wedding</option><option>Party</option></select></div>
+<div class="col mt-2"><select name="season" class="form-select"><option>Summer</option><option>Winter</option></select></div>
+<div class="col mt-2"><select name="budget" class="form-select"><option>Low</option><option>Medium</option><option>High</option></select></div>
+<div class="col mt-2"><select name="color" class="form-select"><option>Black</option><option>Blue</option><option>Red</option></select></div>
+</div>
+
+<button class="btn btn-success w-100 mt-2">Generate (Form)</button>
+</form>
+
+<hr>
+
+<!-- CHAT -->
+<div class="chat-box" id="chat">
+
+{% for c in chats %}
+<div class="user"><span>{{c.user}}</span></div>
+
+<div class="bot">
+<b>Items:</b><br>
+{% for i in c.bot["items"] %}
+<span class="badge-item">{{i}}</span>
+{% endfor %}
+
+<br><b>Accessories:</b><br>
+{% for i in c.bot["accessories"] %}
+<span class="badge-item">{{i}}</span>
+{% endfor %}
+
+<p><b>Tip:</b> {{c.bot["fashion_tip"]}}</p>
+<p><b>Description:</b> {{c.bot["description"]}}</p>
+</div>
+{% endfor %}
+
+</div>
+
+<form method="POST">
+<div class="input-group mt-2">
+<input name="message" class="form-control" placeholder="Ask fashion advice..." required>
+<button class="btn btn-primary">Send</button>
+</div>
+</form>
+
+<div class="text-center mt-3">
+<a href="/history" class="btn btn-dark">History</a>
+<a href="/about" class="btn btn-light">About</a>
+<a href="/clear" class="btn btn-danger">Clear</a>
+</div>
+
+</div>
+</div>
+
+<script>
+let chat=document.getElementById("chat");
+chat.scrollTop=chat.scrollHeight;
+</script>
+
+</body>
+</html>

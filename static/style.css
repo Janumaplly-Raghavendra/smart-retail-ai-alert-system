@@ -1,0 +1,34 @@
+body {
+    background: linear-gradient(135deg, #f8f9fa, #eef2ff);
+    min-height: 100vh;
+}
+
+.navbar-brand {
+    letter-spacing: 0.5px;
+}
+
+.hero-card,
+.result-card,
+.preview-card {
+    border-radius: 20px;
+}
+
+.card {
+    border-radius: 20px;
+}
+
+.btn-primary {
+    border-radius: 12px;
+    padding: 10px 16px;
+}
+
+.form-control,
+.form-select {
+    border-radius: 12px;
+    padding: 10px 12px;
+}
+
+.table {
+    border-radius: 12px;
+    overflow: hidden;
+}
